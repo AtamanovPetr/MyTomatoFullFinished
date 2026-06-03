@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <link rel="stylesheet" href="./css/normalize.css" />
+    <link rel="stylesheet" href="./css/style.css" />
+
+    <title id="page-title">25:00</title>
+  </head>
+  <body>
+    <section class="main">
+      <div class="container">
+        <button id="open-modal" class="button modal-btn" data-aos="fade-up">
+          Регистрация
+        </button>
+        <div class="card-wrapper" data-aos="fade-up" data-aos-delay="300">
+          <div class="card">
+            <h1 id="card-label" class="card-title">Начнём?</h1>
+            <div id="timer" class="time">25:00</div>
+            <button class="button" id="start">Start</button
+            ><button class="button" id="stop">Stop</button
+            ><button class="button" id="reset">Reset</button>
+            <button class="button skip" id="skip-btn">
+              Пропустить перерыв
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Статистика -->
+    <!-- <div class="container">
+      <div
+        class="chart-container"
+        style="position: relative; height: 40vh; width: 80vw; margin: 0 auto"
+      >
+        <canvas id="myChart"></canvas>
+      </div>
+    </div> -->
+    <!-- Модалка -->
+    <!-- <div class="overlay" id="overlay">
+      <div class="modal" id="modal">
+        <div class="exit-btn">x</div>
+        <div class="modal-wrapper">
+          <h1 class="modal-title">Зарегистрируйся прямо сейчас</h1>
+          <input
+            id="modal-username"
+            type="text"
+            placeholder="Имя"
+            class="modal-input"
+          />
+          <input
+            id="modal-userphone"
+            type="tel"
+            placeholder="Телефон"
+            class="modal-input"
+          />
+          <button id="submit-btn" type="submit" class="button submit">
+            Зарегистрироваться
+          </button>
+        </div>
+      </div>
+    </div> -->
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+      AOS.init();
+    </script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> -->
+    <script src="./js/stats.js"></script>
+    <script src="./js/main.js"></script>
+  </body>
+</html>
