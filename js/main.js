@@ -13,8 +13,8 @@ window.addEventListener("scroll", () => {
     const scrollY = window.scrollY;
     decorImages.forEach((img, index) => {
       const factor = (index + 1) * 0.02;
-      const y = Math.sin(scrollY * factor) * 15;
-      const x = Math.cos(scrollY * factor * 0.8) * 10;
+      const y = Math.sin(scrollY * factor) * 10;
+      const x = Math.cos(scrollY * factor * 0.8) * 1;
       img.style.transform = `translate(${x}px, ${y}px)`;
     });
   });
