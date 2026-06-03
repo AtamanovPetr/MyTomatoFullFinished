@@ -100,7 +100,6 @@ body:not(.is-break):not(.is-long-break) .card {
   border: none;
   color: var(--text-primary);
   background-color: var(--btn-bg);
-  margin-right: 10px;
   cursor: pointer;
   transition:
     transform 0.2s ease,
