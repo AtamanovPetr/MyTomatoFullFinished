@@ -11,7 +11,7 @@ let tomatoCount = 0;
 let duration = 25 * 60; // seconds
 let endTime = null; // пустая переменная конечного времени
 let isRunning = false; // то что таймер тикает состояние false
-
+let timeOutId = null;
 function runTimer() {
   // функция запуска таймера
   timerId = setInterval(() => {
@@ -21,10 +21,19 @@ function runTimer() {
     updateTime(remainingSeconds); // выводим на экран оставшиеся секунды
     if (remainingSeconds <= 0) {
       // если время вышло то
-      clearInterval(timerId); // останавливаем таймер
+      clearInterval(timerId);
       timerId = null;
-      switchMode(); // меняем режим
       isRunning = false;
+      if (timeOutId !== null) {
+        return;
+      } else {
+        timeOutId = setTimeout(() => {
+          // останавливаем таймер
+          switchMode();
+          saveState();
+          timeOutId = null; // меняем режим
+        }, 1000);
+      }
     }
   }, 300);
 }
@@ -57,9 +66,14 @@ function restoreState() {
     endTime = state.endTime;
     isRunning = state.isRunning; //восстанавливаем все переменные из state
     if (isBreak) {
-      // если перерыв то меняем текст
-      cardLabel.textContent = `Пора сделать перерыв!`;
-      document.body.classList.add("is-break");
+      if (tomatoCount < 3) {
+        // если перерыв то меняем текст
+        cardLabel.textContent = `Пора сделать перерыв!`;
+        document.body.classList.add("is-break");
+      } else {
+        cardLabel.textContent = `Пора сделать длинный перерыв!`;
+        document.body.classList.add("is-long-break");
+      }
     } else {
       // иначе пора за работу
       cardLabel.textContent = `Пора за работу!`;
@@ -106,7 +120,6 @@ function switchMode() {
     duration = 25 * 60;
   }
   updateTime(duration);
-  saveState();
 }
 function updateTime(secs) {
   let minutes = Math.floor(secs / 60);
@@ -128,11 +141,15 @@ stopBtn.addEventListener("click", () => {
   clearInterval(timerId);
   timerId = null;
   isRunning = false;
+  clearTimeout(timeOutId);
+  timeOutId = null;
   saveState(); // также сохраняем состояние isRunning
 });
 resetBtn.addEventListener("click", () => {
   clearInterval(timerId);
   timerId = null;
+  clearTimeout(timeOutId);
+  timeOutId = null;
   tomatoCount = 0;
   isBreak = false;
   duration = 25 * 60;
@@ -145,8 +162,10 @@ resetBtn.addEventListener("click", () => {
 skipBtn.addEventListener("click", () => {
   clearInterval(timerId);
   timerId = null;
-  switchMode();
+  clearTimeout(timeOutId);
+  timeOutId = null;
   isRunning = false;
+  switchMode();
   saveState();
 });
 document.addEventListener("DOMContentLoaded", restoreState); // при загрузке страницы запускаем функцию которая проверяет есть ли данные в хранилище и восстанавливает их в случае если они есть а иначе просто выставляет начальные 25 минут
