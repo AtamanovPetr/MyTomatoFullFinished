@@ -5,6 +5,32 @@ const skipBtn = document.getElementById("skip-btn");
 const cardLabel = document.getElementById("card-label");
 const timeContent = document.getElementById("timer");
 const pageTitle = document.getElementById("page-title");
+const Card = document.getElementById("pomodoro-card");
+const decorImages = document.querySelectorAll(".decor-img");
+
+window.addEventListener("scroll", () => {
+  requestAnimationFrame(() => {
+    const scrollY = window.scrollY;
+    decorImages.forEach((img, index) => {
+      const factor = (index + 1) * 0.02;
+      const y = Math.sin(scrollY * factor) * 15;
+      const x = Math.cos(scrollY * factor * 0.8) * 10;
+      img.style.transform = `translate(${x}px, ${y}px)`;
+    });
+  });
+});
+
+Card.addEventListener("mousemove", (e) => {
+  const rect = Card.getBoundingClientRect();
+  let x = e.clientX - rect.left;
+  let y = e.clientY - rect.top;
+  let rotateY = (x / rect.width - 0.5) * 20;
+  let rotateX = (y / rect.height - 0.5) * 20;
+  Card.style.transform = `rotateX(${-rotateX}deg) rotateY(${rotateY}deg)`;
+});
+Card.addEventListener("mouseleave", () => {
+  Card.style.transform = "rotateX(0deg) rotateY(0deg)";
+});
 let timerId = null;
 let isBreak = false;
 let tomatoCount = 0;

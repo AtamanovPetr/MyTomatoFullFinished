@@ -17,12 +17,13 @@
   </head>
   <body>
     <section class="main">
+      <img src="./img/time.png" alt="Time" class="decor-img decor-img--time" />
       <div class="container">
         <button id="open-modal" class="button modal-btn" data-aos="fade-up">
           Регистрация
         </button>
         <div class="card-wrapper" data-aos="fade-up" data-aos-delay="300">
-          <div class="card">
+          <div class="card" id="pomodoro-card">
             <h1 id="card-label" class="card-title">Начнём?</h1>
             <div id="timer" class="time">25:00</div>
             <button class="button" id="start">Start</button
@@ -35,15 +36,136 @@
         </div>
       </div>
     </section>
-    <!-- Статистика -->
-    <!-- <div class="container">
-      <div
-        class="chart-container"
-        style="position: relative; height: 40vh; width: 80vw; margin: 0 auto"
-      >
-        <canvas id="myChart"></canvas>
+
+    <section class="how-it-works section">
+      <div class="container">
+        <h2>Как это работает</h2>
+        <div class="steps">
+          <div class="step" data-aos="fade-right">
+            <span class="step-icon">🍅</span>
+            <h3>Выбери задачу</h3>
+            <p>Реши, над чем будешь работать.</p>
+          </div>
+          <div class="step" data-aos="fade-up" data-aos-delay="200">
+            <span class="step-icon">⏳</span>
+            <h3>Запусти таймер</h3>
+            <p>25 минут концентрации без отвлечений.</p>
+          </div>
+          <div class="step" data-aos="fade-left" data-aos-delay="400">
+            <span class="step-icon">☕</span>
+            <h3>Сделай перерыв</h3>
+            <p>Короткий отдых для перезагрузки.</p>
+          </div>
+        </div>
       </div>
-    </div> -->
+      <img
+        src="./img/brain.png"
+        alt="Brain"
+        class="decor-img decor-img--brain"
+      />
+    </section>
+
+    <section class="advantages section">
+      <div class="container">
+        <h2>Преимущества</h2>
+        <div class="cards">
+          <div class="advantage-card" data-aos="zoom-in" data-aos-delay="0">
+            <h3>Ритмичная продуктивность</h3>
+            <p>
+              25 минут полного погружения, затем короткий перерыв. Таймер
+              считает помидоры и автоматически предлагает ритм, который держит
+              мозг в тонусе.
+            </p>
+          </div>
+          <div class="advantage-card" data-aos="zoom-in" data-aos-delay="100">
+            <h3>Умный отдых</h3>
+            <p>
+              После четырёх циклов включается длинный перерыв — 20 минут на
+              настоящее восстановление. Никакой усталости и выгорания.
+            </p>
+          </div>
+          <div class="advantage-card" data-aos="zoom-in" data-aos-delay="200">
+            <h3>Дизайн как ритуал</h3>
+            <p>
+              Стеклянная 3D-карточка, тёмная тема и живое свечение превращают
+              работу в красивый ритуал. Прогресс сохраняется, даже если закрыть
+              вкладку.
+            </p>
+          </div>
+        </div>
+      </div>
+      <img src="./img/bulb.png" alt="Bulb" class="decor-img decor-img--bulb" />
+    </section>
+
+    <section class="testimonials section">
+      <img
+        src="./img/saturn.png"
+        alt="Saturn"
+        class="decor-img decor-img--saturn"
+      />
+      <div class="container">
+        <h2>Отзывы</h2>
+        <div class="reviews">
+          <div class="review-card" data-aos="fade-up-right">
+            <p class="review-text">
+              «Этот Pomodoro таймер спас мою продуктивность. Теперь я успеваю в
+              два раза больше и не выгораю к вечеру.»
+            </p>
+            <div class="review-author">
+              <img
+                src="https://i.pravatar.cc/60?img=11"
+                alt="Аватар"
+                class="review-avatar"
+              />
+              <div>
+                <strong>Анна М.</strong>
+                <span>Фрилансер</span>
+              </div>
+            </div>
+          </div>
+          <div class="review-card" data-aos="fade-up" data-aos-delay="200">
+            <p class="review-text">
+              «Стеклянный дизайн и плавные анимации создают ощущение
+              премиального инструмента. Пользуюсь каждый день.»
+            </p>
+            <div class="review-author">
+              <img
+                src="https://i.pravatar.cc/60?img=12"
+                alt="Аватар"
+                class="review-avatar"
+              />
+              <div>
+                <strong>Игорь П.</strong>
+                <span>Дизайнер</span>
+              </div>
+            </div>
+          </div>
+          <div class="review-card" data-aos="fade-up-left" data-aos-delay="400">
+            <p class="review-text">
+              «Раньше думал, что Pomodoro — не для меня. Теперь это мой ритуал:
+              запускаю таймер и полностью погружаюсь в код.»
+            </p>
+            <div class="review-author">
+              <img
+                src="https://i.pravatar.cc/60?img=13"
+                alt="Аватар"
+                class="review-avatar"
+              />
+              <div>
+                <strong>Елена С.</strong>
+                <span>Разработчик</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer section">
+      <div class="container">
+        <p>© 2025 Pomodoro Timer. Сделано с ❤️ для продуктивности.</p>
+      </div>
+    </footer>
     <!-- Модалка -->
     <!-- <div class="overlay" id="overlay">
       <div class="modal" id="modal">
@@ -73,8 +195,6 @@
     <script>
       AOS.init();
     </script>
-    <!-- <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> -->
-    <script src="./js/stats.js"></script>
     <script src="./js/main.js"></script>
   </body>
 </html>
