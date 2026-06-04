@@ -74,7 +74,7 @@ body:not(.is-break):not(.is-long-break) .card {
 }
 @keyframes pulse-glow {
   from {
-    box-shadow: 0 0 15px rgba(138, 92, 246, 0.2);
+    box-shadow: 0 0 15px rgba(138, 92, 246, 0.1);
   }
   to {
     box-shadow: 0 0 30px rgba(76, 0, 255, 0.7);
@@ -114,6 +114,10 @@ body:not(.is-break):not(.is-long-break) .card {
   &:active {
     transform: scale(0.7);
   }
+}
+#stop {
+  margin-right: 10px;
+  margin-left: 10px;
 }
 .modal-btn {
   display: block;
@@ -372,9 +376,8 @@ body:not(.is-break):not(.is-long-break) .card {
   .modal-btn {
     margin-top: 60px;
   }
-  .theme-btn {
-    top: 2%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+  #stop {
+    margin-right: 0;
+    margin-left: 0;
   }
 }
