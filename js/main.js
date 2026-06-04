@@ -5,33 +5,13 @@ const skipBtn = document.getElementById("skip-btn");
 const cardLabel = document.getElementById("card-label");
 const timeContent = document.getElementById("timer");
 const pageTitle = document.getElementById("page-title");
-
+const openModal = document.getElementById("open-modal");
+const modalBlock = document.getElementById("modal");
+const modalOverlay = document.getElementById("overlay");
+const exitBtn = document.getElementById("exitbtn");
 const Card = document.getElementById("pomodoro-card");
 const decorImages = document.querySelectorAll(".decor-img");
 
-window.addEventListener("scroll", () => {
-  requestAnimationFrame(() => {
-    const scrollY = window.scrollY;
-    decorImages.forEach((img, index) => {
-      const factor = (index + 1) * 0.02;
-      const y = Math.sin(scrollY * factor) * 10;
-      const x = Math.cos(scrollY * factor * 0.8) * 1;
-      img.style.transform = `translate(${x}px, ${y}px)`;
-    });
-  });
-});
-
-Card.addEventListener("mousemove", (e) => {
-  const rect = Card.getBoundingClientRect();
-  let x = e.clientX - rect.left;
-  let y = e.clientY - rect.top;
-  let rotateY = (x / rect.width - 0.5) * 20;
-  let rotateX = (y / rect.height - 0.5) * 20;
-  Card.style.transform = `rotateX(${-rotateX}deg) rotateY(${rotateY}deg)`;
-});
-Card.addEventListener("mouseleave", () => {
-  Card.style.transform = "rotateX(0deg) rotateY(0deg)";
-});
 let timerId = null;
 let endTime = null;
 let duration = 25 * 60;
@@ -188,4 +168,61 @@ skipBtn.addEventListener("click", () => {
   saveState();
 });
 
+function openModalWindow() {
+  document.body.style = "overflow: hidden";
+  modalBlock.classList.add("is-open");
+  modalOverlay.classList.add("is-open-overlay");
+}
+
+function closeModal() {
+  document.activeElement.blur();
+  document.body.style = "";
+  modalBlock.classList.remove("is-open");
+  modalOverlay.classList.remove("is-open-overlay");
+}
+
+openModal.addEventListener("click", () => {
+  openModalWindow();
+});
+exitBtn.addEventListener("click", () => {
+  closeModal();
+});
+modalOverlay.addEventListener("click", () => {
+  closeModal();
+});
+modalBlock.addEventListener("click", (e) => {
+  e.stopPropagation();
+});
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape" && modalBlock.classList.contains("is-open")) {
+    closeModal();
+  } else {
+    return;
+  }
+});
+
 document.addEventListener("DOMContentLoaded", restoreState);
+
+window.addEventListener("scroll", () => {
+  requestAnimationFrame(() => {
+    const scrollY = window.scrollY;
+    decorImages.forEach((img, index) => {
+      const factor = (index + 1) * 0.02;
+      const y = Math.sin(scrollY * factor) * 10;
+      const x = Math.cos(scrollY * factor * 0.8) * 1;
+      img.style.transform = `translate(${x}px, ${y}px)`;
+    });
+  });
+});
+
+Card.addEventListener("mousemove", (e) => {
+  const rect = Card.getBoundingClientRect();
+  let x = e.clientX - rect.left;
+  let y = e.clientY - rect.top;
+  let rotateY = (x / rect.width - 0.5) * 20;
+  let rotateX = (y / rect.height - 0.5) * 20;
+  Card.style.transform = `rotateX(${-rotateX}deg) rotateY(${rotateY}deg)`;
+});
+Card.addEventListener("mouseleave", () => {
+  Card.style.transform = "rotateX(0deg) rotateY(0deg)";
+});

@@ -150,7 +150,7 @@ body:not(.is-break):not(.is-long-break) .card {
     background-color: rgba(0, 0, 0, 0);
   }
   to {
-    background-color: rgba(0, 0, 0, 0.6);
+    background-color: rgba(0, 0, 0, 0.8);
   }
 }
 @keyframes fadeInUpModal {
@@ -193,7 +193,7 @@ body:not(.is-break):not(.is-long-break) .card {
   transition: 0.3s all;
   margin-bottom: 5px;
   &:focus {
-    background-color: #ff0000;
+    background-color: #000000;
     transform: scale(1.05);
     color: white;
     &::placeholder {
@@ -358,6 +358,42 @@ body:not(.is-break):not(.is-long-break) .card {
   filter: drop-shadow(0 0 25px rgba(76, 0, 255, 0.5));
 }
 
+/* Контейнер для лейбла и инпута */
+.modal-input-group {
+  width: 100%;
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+/* Стили для лейбла */
+.modal-input-group label {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+/* Стили для числовых инпутов */
+.modal-input-group input {
+  width: 100%;
+  padding: 12px 15px;
+  border-radius: 10px;
+  border: 1px solid var(--card-border);
+  outline: none;
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text-primary);
+  font-size: 1rem;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+/* Фокус на инпуте */
+.modal-input-group input:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 10px rgba(138, 92, 246, 0.3);
+}
 @media (max-width: 576px) {
   .main {
     margin-top: 50px;

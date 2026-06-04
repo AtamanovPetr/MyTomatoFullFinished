@@ -25,7 +25,7 @@
       />
       <div class="container">
         <button id="open-modal" class="button modal-btn" data-aos="fade-up">
-          Регистрация
+          Настроить время
         </button>
         <div class="card-wrapper" data-aos="fade-up" data-aos-delay="300">
           <div class="card" id="pomodoro-card">
@@ -179,29 +179,50 @@
       </div>
     </footer>
     <!-- Модалка -->
-    <!-- <div class="overlay" id="overlay">
+    <div class="overlay" id="overlay">
       <div class="modal" id="modal">
-        <div class="exit-btn">x</div>
+        <div class="exit-btn" id="exitbtn">x</div>
         <div class="modal-wrapper">
-          <h1 class="modal-title">Зарегистрируйся прямо сейчас</h1>
-          <input
-            id="modal-username"
-            type="text"
-            placeholder="Имя"
-            class="modal-input"
-          />
-          <input
-            id="modal-userphone"
-            type="tel"
-            placeholder="Телефон"
-            class="modal-input"
-          />
-          <button id="submit-btn" type="submit" class="button submit">
-            Зарегистрироваться
+          <h1 class="modal-title">Настройки таймера</h1>
+          <div class="modal-input-group">
+            <label for="work-duration">Работа (мин)</label>
+            <input
+              id="work-duration"
+              type="number"
+              class="modal-input"
+              value="25"
+              min="1"
+              max="60"
+            />
+          </div>
+          <div class="modal-input-group">
+            <label for="break-duration">Короткий перерыв (мин)</label>
+            <input
+              id="break-duration"
+              type="number"
+              class="modal-input"
+              value="5"
+              min="1"
+              max="30"
+            />
+          </div>
+          <div class="modal-input-group">
+            <label for="long-break-duration">Длинный перерыв (мин)</label>
+            <input
+              id="long-break-duration"
+              type="number"
+              class="modal-input"
+              value="20"
+              min="1"
+              max="60"
+            />
+          </div>
+          <button id="save-settings-btn" type="button" class="button submit">
+            Сохранить
           </button>
         </div>
       </div>
-    </div> -->
+    </div>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
