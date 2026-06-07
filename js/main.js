@@ -19,6 +19,7 @@ let isBreak = false;
 let isRunning = false;
 let timeOutId = null;
 let tomatoCount = 0;
+let pausedTimeLeft = null;
 function saveState() {
   let state = {
     isBreak,
@@ -125,18 +126,26 @@ function updateTime(secs) {
   pageTitle.textContent = timeOutput;
 }
 function startTimer() {
+  if (pausedTimeLeft > 0) {
+    endTime = Date.now() + pausedTimeLeft * 1000;
+  } else {
+    endTime = Date.now() + duration * 1000;
+  }
   clearTimeout(timeOutId);
   timeOutId = null;
-  endTime = Date.now() + duration * 1000;
   isRunning = true;
   saveState();
   runTimer();
+  pausedTimeLeft = null;
 }
 
 startBtn.addEventListener("click", () => {
   startTimer();
 });
 stopBtn.addEventListener("click", () => {
+  let remainingMs = endTime - Date.now();
+  let remainingSeconds = Math.round(remainingMs / 1000);
+  pausedTimeLeft = remainingSeconds;
   clearInterval(timerId);
   timerId = null;
   isRunning = false;
@@ -151,6 +160,7 @@ resetBtn.addEventListener("click", () => {
   timerId = null;
   clearTimeout(timeOutId);
   timeOutId = null;
+  pausedTimeLeft = null;
   duration = 25 * 60;
   cardLabel.textContent = `Пора за работу!`;
   document.body.classList.remove("is-break", "is-long-break");
@@ -163,6 +173,7 @@ skipBtn.addEventListener("click", () => {
   clearInterval(timerId);
   timerId = null;
   clearTimeout(timeOutId);
+  pausedTimeLeft = null;
   timeOutId = null;
   swithMode();
   saveState();
